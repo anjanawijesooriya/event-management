@@ -2,6 +2,7 @@ import { Button, notification, Table } from "antd";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const EventsDisplay = () => {
   const [data, setData] = useState([]);
@@ -38,11 +39,11 @@ const EventsDisplay = () => {
     },
     {
       title: "Date",
-      dataIndex: "eDate",
+      render: (record) => <>{moment(record.eDate).format("DD MMM YYYY")}</>,
     },
     {
       title: "Revenue",
-      dataIndex: "eRevenue",
+      render: (record) => <>{"Rs." + record.eRevenue}</>,
     },
     {
       title: "Food",
